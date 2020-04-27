@@ -552,7 +552,7 @@ class Visit(Base):
 	message_id = sqlalchemy.Column(sqlalchemy.String, sqlalchemy.ForeignKey('messages.id'), nullable=False)
 	campaign_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('campaigns.id'), nullable=False)
 	count = sqlalchemy.Column(sqlalchemy.Integer, default=1)
-	ip = sqlalchemy.Column(sqlalchemy.String)
+	ip = sqlalchemy.Column(EncryptedType(sqlalchemy.String, _key))
 	details = sqlalchemy.Column(sqlalchemy.String)
 	user_agent = sqlalchemy.Column(sqlalchemy.String)
 	first_landing_page_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('landing_pages.id'))
